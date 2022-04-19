@@ -1,142 +1,123 @@
 #include <windows.h>  // for MS Windows
 #include <GL/glut.h>  // GLUT, include glu.h and gl.h
 #include <math.h>
+void DrawCircle(float cx, float cy, float r, int num_segments) {
 
 
 
-
-void tree()
-{
-    glBegin(GL_POLYGON);
-	glColor3ub(68,70,68);
-	glVertex2f(-32.75f,10.0f);
-	glVertex2f(-32.75f,18.0f);
-	glVertex2f(-31.25f,18.0f);
-	glVertex2f(-31.25f,10.0f);
-
-	glEnd();
-
-	glBegin(GL_POLYGON);
-	glColor3ub(88,193,90);
-	glVertex2f(-32.0f,20.0f);
-	glVertex2f(-35.0f,15.0f);
-	glVertex2f(-29.0f,15.0f);
-
-	glEnd();
-
-	glBegin(GL_POLYGON);
-	glColor3ub(88,193,90);
-	glVertex2f(-32.0f,22.0f);
-	glVertex2f(-34.5f,17.0f);
-	glVertex2f(-29.0f,17.0f);
-
-	glEnd();
+    glBegin(GL_TRIANGLE_FAN);
+    for (int i = 0; i < num_segments; i++)
+    {
+        float theta = 2.0f * 3.1415926f * float(i) / float(num_segments);//get current angle
 
 
 
-
-	 glBegin(GL_POLYGON);
-	glColor3ub(68,70,68);
-	glVertex2f(-25.75f,10.0f);
-	glVertex2f(-25.75f,18.0f);
-	glVertex2f(-24.25f,18.0f);
-	glVertex2f(-24.25f,10.0f);
-
-	glEnd();
-
-	glBegin(GL_POLYGON);
-	glColor3ub(88,193,90);
-	glVertex2f(-25.0f,20.0f);
-	glVertex2f(-27.0f,15.0f);
-	glVertex2f(-22.0f,15.0f);
-
-	glEnd();
-
-	glBegin(GL_POLYGON);
-	glColor3ub(88,193,90);
-	glVertex2f(-25.0f,22.0f);
-	glVertex2f(-27.5f,17.0f);
-	glVertex2f(-22.0f,17.0f);
-
-	glEnd();
+        float x = r * cosf(theta);//calculate x
+        float y = r * sinf(theta);//calculate y
 
 
-	glBegin(GL_POLYGON);
-	glColor3ub(68,70,68);
-	glVertex2f(-10.75f,10.0f);
-	glVertex2f(-10.75f,18.0f);
-	glVertex2f(-9.25f,18.0f);
-	glVertex2f(-9.25f,10.0f);
 
-	glEnd();
+        glVertex2f(x + cx, y + cy);//output vertex
 
-	glBegin(GL_POLYGON);
-	glColor3ub(88,193,90);
-	glVertex2f(-10.0f,20.0f);
-	glVertex2f(-12.0f,15.0f);
-	glVertex2f(-8.0f,15.0f);
 
-	glEnd();
 
-	glBegin(GL_POLYGON);
-	glColor3ub(88,193,90);
-	glVertex2f(-10.0f,22.0f);
-	glVertex2f(-12.5f,17.0f);
-	glVertex2f(-8.0f,17.0f);
-
-	glEnd();
-
+    }
+    glEnd();
+    glFlush();
 }
-
-
-void hill()
+void cloud1()
 {
 
-	glBegin(GL_POLYGON);//Left hill
-	glColor3ub(88,193,90);
-	glVertex2f(-35.0f,10.0f);
-	glVertex2f(-28.0f,15.0f);
-	glVertex2f(-23.0f,10.0f);
+    glLoadIdentity(); //Reset the drawing perspective*/
+    gluOrtho2D(-40,40,-40,40);
 
-	glEnd();
 
-	glBegin(GL_POLYGON);//Middle hill
-	glColor3ub(24,156,38);
-	glVertex2f(-24.0f,10.0f);
-	glVertex2f(-17.0f,20.0f);
-	glVertex2f(-10.0f,10.0f);
-
-	glEnd();
-
-	glBegin(GL_POLYGON);//Right hill
-	glColor3ub(24,156,38);
-	glVertex2f(-11.0f,10.0f);
-	glVertex2f(0.0f,15.0f);
-	glVertex2f(10.0f,10.0f);
-
-	glEnd();
+    glColor3ub(255, 255, 255);
+    DrawCircle(-26,34,3,200);
+    DrawCircle(-24,35,3,200);
+    DrawCircle(-24,33,3,200);
+    DrawCircle(-22,35,3,200);
+    DrawCircle(-22,33,3,200);
+    DrawCircle(-20,34,3,200);
 }
 
 
 
+void cloud2()
+{
+    glLoadIdentity(); //Reset the drawing perspective
+    gluOrtho2D(-40,40,-40,40);
 
+
+    glColor3ub(255, 255, 255);
+    DrawCircle(-12,34,3,200);
+
+    DrawCircle(-10,35,3,200);
+
+    DrawCircle(-8,33,3,200);
+
+    DrawCircle(-6,35,3,200);
+
+    DrawCircle(-4,33,3,200);
+
+    DrawCircle(-2,34,3,200);
+
+}
+
+void cloud3()
+{
+
+    glLoadIdentity(); //Reset the drawing perspective*/
+    gluOrtho2D(-40,40,-40,40);
+
+
+    glColor3ub(255, 255, 255);
+    DrawCircle(8,34,3,200);
+
+    DrawCircle(9,35,3,200);
+
+    DrawCircle(10,33,3,200);
+
+    DrawCircle(11,35,3,200);
+
+    DrawCircle(14,33,3,200);
+
+    DrawCircle(17,34,3,200);
+
+}
+void sun()
+{
+
+    glLoadIdentity(); //Reset the drawing perspective*/
+    gluOrtho2D(-40,40,-40,40);
+
+    glColor3ub(255,255, 0);
+    DrawCircle(35,34,3,200);
+}
 void display() {
 	glClearColor(1.0f, 1.0f, 1.0f, 1.0f); // Set background color to black and opaque
-	glClear(GL_COLOR_BUFFER_BIT);         // Clear the color buffer (background)
+	glClear(GL_COLOR_BUFFER_BIT);
+
+	         // Clear the color buffer (background)
+glBegin(GL_POLYGON);//sky
+	glColor3ub(150,214,246);
+	glVertex2f(-40.0f,40.0f);
+	glVertex2f(40.0f,40.0f);
+	glVertex2f(40.0f,10.0f);
+	glVertex2f(-40.0f,10.0f);  // x, y
 
 
+	glEnd();
+	sun();
 
-    hill();
+    cloud1();
 
-    tree();
+    cloud2();
+    cloud3();
 
 	glutSwapBuffers();
 
 }
-
-
-
-
 
 int main(int argc, char** argv) {
 	glutInit(&argc, argv);
@@ -146,9 +127,9 @@ int main(int argc, char** argv) {
 	gluOrtho2D(-40,40,-40,40);  // Set the window's initial width & height
 	glutDisplayFunc(display); // Register display callback handler for window re-paint
 
-
-
-
-	glutMainLoop();           // Enter the event-processing loop
+glutMainLoop();           // Enter the event-processing loop
 	return 0;
 }
+
+
+
