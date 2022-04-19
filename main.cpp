@@ -203,7 +203,7 @@ void display() {
 
 
 
-     ship();
+        ship();
 	glutSwapBuffers();
 
 }
@@ -218,7 +218,7 @@ int main(int argc, char** argv) {
 
 
 
-	glutMainLoop();           // Enter the event-processing loop
+	glutMainLoop();           // Enter the event-processing loop or it won't show 
 	return 0;
 }
 
